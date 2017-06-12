@@ -21,6 +21,12 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 ]
 ```
 
+'aliases' => [
+//  ...
+    'InfluxDB' => TrayLabs\InfluxDB\Facades\InfluxDB::class,
+]
+```
+
 * Define env variables to connect to InfluxDB
 
 ```
