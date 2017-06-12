@@ -12,7 +12,7 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 }
 ```
 
-* Add this line to yours config/app.php
+* Add this lines to yours config/app.php
 
 ```
 'providers' => [
