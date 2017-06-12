@@ -8,5 +8,5 @@ return [
     'ssl' => env('INFLUXDB_SLL', 'false'),
     'verifySSL' => env('INFLUXDB_VERIFYSSL', 'false'),
     'timeout' => env('INFLUXDB_TIMEOUT', '0'),
-    'database' => env('INFLUXDB_DATABASE', ''),
+    'dbname' => env('INFLUXDB_DBNAME', ''),
 ];

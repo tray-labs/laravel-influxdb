@@ -17,20 +17,17 @@ class InfluxDBServiceProvider extends LaravelServiceProvider
 
     public function register()
     {
-        $this->app->singleton('InfluxDB\Client', function($app) {
-            try {
-                return InfluxClient::fromDSN(
-                    sprintf('%s://%s:%s@%s:%s/%s',
-                        config('influxdb.user'),
-                        config('influxdb.password'),
+        $this->app->singleton('InfluxDB\Client::class', function($app) {
+                $client = new InfluxClient(
                         config('influxdb.host'),
                         config('influxdb.port'),
-                        config('influxdb.database')
-                    )
+                        config('influxdb.username'),
+                        config('influxdb.password'),
+                        config('influxdb.ssl'),
+                        config('influxdb.verifySSL'),
+                        config('influxdb.timeout'),
                 );
-            } catch (ClientException $e) {
-                return null;
-            }
+            return $client->selectDB(config('influxdb.dbname'));
         });
     }
 }
