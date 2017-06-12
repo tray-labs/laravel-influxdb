@@ -4,7 +4,6 @@ namespace TrayLabs\InfluxDB\Providers;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use InfluxDB\Client as InfluxClient;
-use InfluxDB\Client\Exception as ClientException;
 
 class InfluxDBServiceProvider extends LaravelServiceProvider
 {

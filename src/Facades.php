@@ -8,6 +8,6 @@ class InfluxDBFacade extends LaravelFacade
 {
     protected static function getFacadeAccessor()
     {
-        return 'InfluxDB\Client';
+        return 'InfluxDB\Client::class';
     }
 }
