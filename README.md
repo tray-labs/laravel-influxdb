@@ -1,10 +1,10 @@
 # Laravel Influxdb
 
-A service made to provide, set up and use the library from influxdata * [influxdb-php](https://github.com/influxdata/influxdb-php/) in Laravel.
+A service made to provide, set up and use the library from influxdata [influxdb-php](https://github.com/influxdata/influxdb-php/) in Laravel.
 
 ## Installing
 
-Add this line to require section of ```composer.json``` and execute on your terminal ```$ composer install```
+* Add this line to require section of ```composer.json``` and execute on your terminal ```$ composer install```
 
 ```
 "require": {
@@ -12,7 +12,7 @@ Add this line to require section of ```composer.json``` and execute on your term
 }
 ```
 
-Add this line to yours config/app.php
+* Add this line to yours config/app.php
 
 ```
 'providers' => [
@@ -21,7 +21,7 @@ Add this line to yours config/app.php
 ]
 ```
 
-Define env variables to connect to InfluxDB
+* Define env variables to connect to InfluxDB
 
 ```
     INFLUXDB_HOST=localhost
