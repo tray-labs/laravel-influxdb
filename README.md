@@ -17,14 +17,14 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 ```
 'providers' => [
 //  ...
-    TrayLabs\InfluxDB\Providers\InfluxDBServiceProvider::class,
+    TrayLabs\InfluxDB\Providers\ServiceProvider::class,
 ]
 ```
 
 ```
 'aliases' => [
 //  ...
-    'InfluxDB' => TrayLabs\InfluxDB\Facades\InfluxDB::class,
+    'InfluxDB' => TrayLabs\InfluxDB\Facades\Facade::class,
 ]
 ```
 

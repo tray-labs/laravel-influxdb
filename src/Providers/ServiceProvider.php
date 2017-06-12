@@ -5,7 +5,7 @@ namespace TrayLabs\InfluxDB\Providers;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use InfluxDB\Client as InfluxClient;
 
-class InfluxDBServiceProvider extends LaravelServiceProvider
+class ServiceProvider extends LaravelServiceProvider
 {
     public function boot()
     {
@@ -16,7 +16,7 @@ class InfluxDBServiceProvider extends LaravelServiceProvider
 
     public function register()
     {
-        $this->app->singleton('InfluxDB\Client::class', function($app) {
+        $this->app->singleton(InfluxClient::class, function($app) {
                 $client = new InfluxClient(
                         config('influxdb.host'),
                         config('influxdb.port'),

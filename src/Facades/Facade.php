@@ -4,7 +4,7 @@ namespace TrayLabs\InfluxDB\Facades;
 
 use Illuminate\Support\Facades\Facade as LaravelFacade;
 
-class InfluxDB extends LaravelFacade
+class Facade extends LaravelFacade
 {
     protected static function getFacadeAccessor()
     {
