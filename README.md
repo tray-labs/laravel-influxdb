@@ -41,9 +41,39 @@ A service made to provide, set up and use the library from influxdata [influxdb-
     INFLUXDB_DBNAME=some_database
 ```
 
-## How to use
+## Reading Data
 
-The usage is the same from [influxdb-php](https://github.com/influxdata/influxdb-php/) project.
+```
+// executing a query will yield a resultset object
+$result = InfluxDB::query('select * from test_metric LIMIT 5');
+
+// get the points from the resultset yields an array
+$points = $result->getPoints();
+```
+
+## Writing Data
+
+```
+// create an array of points
+$points = array(
+    new Point(
+        'test_metric', // name of the measurement
+        0.64, // the measurement value
+        ['host' => 'server01', 'region' => 'us-west'], // optional tags
+        ['cpucount' => 10], // optional additional fields
+        time() // Time precision has to be set to seconds!
+    ),
+    new Point(
+        'test_metric', // name of the measurement
+        0.84, // the measurement value
+        ['host' => 'server01', 'region' => 'us-west'], // optional tags
+        ['cpucount' => 10], // optional additional fields
+        time() // Time precision has to be set to seconds!
+    )
+);
+
+$result = InfluxDB::writePoints($points, Database::PRECISION_SECONDS);
+```
 
 License
 ----
