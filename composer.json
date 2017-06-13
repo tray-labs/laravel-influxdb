@@ -1,6 +1,6 @@
 {
 	"name": "tray-labs/laravel-influxdb",
-    "description": "Client de conexão ao banco de dados Influx para ser usado no Desk360 da Tray",
+    "description": "A service made to provide, set up and use the library from influxdata influxphp in Laravel.",
     "type": "library",
     "license": "Commercial",
     "authors": [
