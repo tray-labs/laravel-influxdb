@@ -7,6 +7,6 @@ return [
     'password' => env('INFLUXDB_PASSWORD', ''),
     'ssl' => env('INFLUXDB_SSL', false),
     'verifySSL' => env('INFLUXDB_VERIFYSSL', false),
-    'timeout' => env('INFLUXDB_TIMEOUT', '0'),
+    'timeout' => env('INFLUXDB_TIMEOUT', 0),
     'dbname' => env('INFLUXDB_DBNAME', ''),
 ];
