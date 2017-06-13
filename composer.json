@@ -1,0 +1,22 @@
+{
+	"name": "tray-labs/laravel-influxdb",
+    "description": "Client de conexão ao banco de dados Influx para ser usado no Desk360 da Tray",
+    "type": "library",
+    "license": "Commercial",
+    "authors": [
+        {
+            "name": "Tray Tecnologia",
+            "email": "dandrade@tray.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TrayLabs\\InfluxDB\\": "src/"
+        }
+    },
+    "require": {
+        "influxdb/influxdb-php": "^1.14",
+        "illuminate/support": "^5.4"
+    },
+    "minimum-stability": "dev"
+}
