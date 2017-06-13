@@ -30,20 +30,22 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 
 * Define env variables to connect to InfluxDB
 
-```
-    INFLUXDB_HOST=localhost
-    INFLUXDB_PORT=8086
-    INFLUXDB_USER=some_user
-    INFLUXDB_PASSWORD=some_password
-    INFLUXDB_SSL=false
-    INFLUXDB_VERIFYSSL=false
-    INFLUXDB_TIMEOUT=0
-    INFLUXDB_DBNAME=some_database
+```ini
+INFLUXDB_HOST=localhost
+INFLUXDB_PORT=8086
+INFLUXDB_USER=some_user
+INFLUXDB_PASSWORD=some_password
+INFLUXDB_SSL=false
+INFLUXDB_VERIFYSSL=false
+INFLUXDB_TIMEOUT=0
+INFLUXDB_DBNAME=some_database
 ```
 
 ## Reading Data
 
-```
+```php
+<?php
+
 // executing a query will yield a resultset object
 $result = InfluxDB::query('select * from test_metric LIMIT 5');
 
@@ -53,17 +55,19 @@ $points = $result->getPoints();
 
 ## Writing Data
 
-```
+```php
+<?php
+
 // create an array of points
 $points = array(
-    new Point(
+    new InfluxDB\Point(
         'test_metric', // name of the measurement
         0.64, // the measurement value
         ['host' => 'server01', 'region' => 'us-west'], // optional tags
         ['cpucount' => 10], // optional additional fields
         time() // Time precision has to be set to seconds!
     ),
-    new Point(
+    new InfluxDB\Point(
         'test_metric', // name of the measurement
         0.84, // the measurement value
         ['host' => 'server01', 'region' => 'us-west'], // optional tags
@@ -72,7 +76,7 @@ $points = array(
     )
 );
 
-$result = InfluxDB::writePoints($points, Database::PRECISION_SECONDS);
+$result = InfluxDB::writePoints($points, InfluxDB::PRECISION_SECONDS);
 ```
 
 License
