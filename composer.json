@@ -15,7 +15,8 @@
         }
     },
     "require": {
-        "influxdb/influxdb-php": "^1.14"
+        "influxdb/influxdb-php": "^1.14",
+        "illuminate/support": "^5.4"
     },
     "minimum-stability": "dev"
 }
