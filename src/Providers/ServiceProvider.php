@@ -42,7 +42,7 @@ class ServiceProvider extends LaravelServiceProvider
                 config('influxdb.password'),
                 config('influxdb.ssl'),
                 config('influxdb.verifySSL'),
-                config('influxdb.timeout'),
+                config('influxdb.timeout')
             );
             return $client->selectDB(config('influxdb.dbname'));
         });
