@@ -23,7 +23,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '../config/InfluxDB.php' => config_path('influxdb.php')
+            __DIR__ . '/../../config/InfluxDB.php' => config_path('influxdb.php')
         ]);
     }
 
