@@ -62,21 +62,21 @@ $points = $result->getPoints();
 $points = array(
     new InfluxDB\Point(
         'test_metric', // name of the measurement
-        0.64, // the measurement value
+        null, // the measurement value
         ['host' => 'server01', 'region' => 'us-west'], // optional tags
         ['cpucount' => 10], // optional additional fields
         time() // Time precision has to be set to seconds!
     ),
     new InfluxDB\Point(
         'test_metric', // name of the measurement
-        0.84, // the measurement value
+        null, // the measurement value
         ['host' => 'server01', 'region' => 'us-west'], // optional tags
         ['cpucount' => 10], // optional additional fields
         time() // Time precision has to be set to seconds!
     )
 );
 
-$result = InfluxDB::writePoints($points, InfluxDB::PRECISION_SECONDS);
+$result = InfluxDB::writePoints($points, InfluxDB\Database::PRECISION_SECONDS);
 ```
 
 License
