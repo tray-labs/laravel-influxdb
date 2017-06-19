@@ -24,7 +24,7 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 ```
 'aliases' => [
 //  ...
-    'InfluxDB' => TrayLabs\InfluxDB\Facades\Facade::class,
+    'InfluxDB' => TrayLabs\InfluxDB\Facades\InfluxDB::class,
 ]
 ```
 
@@ -76,7 +76,7 @@ $points = array(
     )
 );
 
-$result = InfluxDB::writePoints($points, InfluxDB\Database::PRECISION_SECONDS);
+$result = InfluxDB::writePoints($points, \InfluxDB\Database::PRECISION_SECONDS);
 ```
 
 License
