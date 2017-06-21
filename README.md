@@ -41,6 +41,12 @@ INFLUXDB_TIMEOUT=0
 INFLUXDB_DBNAME=some_database
 ```
 
+* Write this into your terminal inside your project
+
+```ini
+php artisan vendor:publish
+```
+
 ## Reading Data
 
 ```php
