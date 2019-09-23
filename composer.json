@@ -18,5 +18,15 @@
         "influxdb/influxdb-php": "^1.14",
         "illuminate/support": "^6.0|^5.0"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TrayLabs\\InfluxDB\\Providers\\ServiceProvider"
+            ],
+            "aliases": {
+                "InfluxDB": "TrayLabs\\InfluxDB\\Facades\\InfluxDB"
+            }
+        }
+   }
 }
