@@ -1,5 +1,5 @@
 {
-	"name": "tray-labs/laravel-influxdb",
+    "name": "tray-labs/laravel-influxdb",
     "description": "A service made to provide, set up and use the library from influxdata influxphp in Laravel.",
     "type": "library",
     "license": "MIT",
@@ -18,5 +18,12 @@
         "influxdb/influxdb-php": "^1.14",
         "illuminate/support": "^5.0"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+      "laravel": {
+          "providers": [
+                "TrayLabs\InfluxDB\Providers\ServiceProvider"
+            ]
+        }
+    }
 }
