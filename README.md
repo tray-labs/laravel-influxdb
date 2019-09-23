@@ -4,11 +4,17 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 
 ## Installing
 
-* Add this line to require section of ```composer.json``` and execute on your terminal ```$ composer install```
+* Install by composer command:
 
+```sh
+composer install tray-labs/laravel-influxdb
 ```
+
+* Or add this line to require section of ```composer.json``` and execute on your terminal ```$ composer install```
+
+```json
 "require": {
-    "tray-labs/laravel-influxdb": "*"
+    "tray-labs/laravel-influxdb": "^1.0"
 }
 ```
 
@@ -17,14 +23,14 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 
 * Add this lines to yours config/app.php (Use only with Laravel version less than 5.5 )
 
-```
+```php
 'providers' => [
 //  ...
     TrayLabs\InfluxDB\Providers\ServiceProvider::class,
 ]
 ```
 
-```
+```php
 'aliases' => [
 //  ...
     'InfluxDB' => TrayLabs\InfluxDB\Facades\InfluxDB::class,
@@ -42,6 +48,8 @@ INFLUXDB_SSL=false
 INFLUXDB_VERIFYSSL=false
 INFLUXDB_TIMEOUT=0
 INFLUXDB_DBNAME=some_database
+INFLUXDB_UDP_ENABLED=false # Activate UDP
+INFLUXDB_UDP_PORT=4444 # Port for UDP
 ```
 
 * Write this into your terminal inside your project

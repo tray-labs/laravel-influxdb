@@ -5,6 +5,7 @@ namespace TrayLabs\InfluxDB\Providers;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use InfluxDB\Client as InfluxClient;
 use InfluxDB\Database as InfluxDB;
+use InfluxDB\Driver\UDP;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -44,6 +45,12 @@ class ServiceProvider extends LaravelServiceProvider
                 config('influxdb.verifySSL'),
                 config('influxdb.timeout')
             );
+            if (config('influxdb.udp.enabled') === true) {
+                $client->setDriver(new UDP(
+                    $client->getHost(),
+                    config('influxdb.udp.port')
+                ));
+            }
             return $client->selectDB(config('influxdb.dbname'));
         });
     }
