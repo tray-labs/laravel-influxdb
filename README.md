@@ -12,7 +12,10 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 }
 ```
 
-* Add this lines to yours config/app.php
+
+## This package use auto-discover, if using less than version laravel 5.5 you must use below settings
+
+* Add this lines to yours config/app.php (Use only with Laravel version less than 5.5 )
 
 ```
 'providers' => [
