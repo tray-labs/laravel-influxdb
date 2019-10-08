@@ -7,7 +7,7 @@ A service made to provide, set up and use the library from influxdata [influxdb-
 * Install by composer command:
 
 ```sh
-composer install tray-labs/laravel-influxdb
+composer require tray-labs/laravel-influxdb
 ```
 
 * Or add this line to require section of ```composer.json``` and execute on your terminal ```$ composer install```
