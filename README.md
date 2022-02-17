@@ -17,25 +17,30 @@ composer require tray-labs/laravel-influxdb
     "tray-labs/laravel-influxdb": "^1.0"
 }
 ```
+## Register service provider(pick one of two).
 
-
-## This package use auto-discover, if using less than version laravel 5.5 you must use below settings
-
-* Add this lines to yours config/app.php (Use only with Laravel version less than 5.5 )
-
-```php
-'providers' => [
-//  ...
+- `Laravel`: in `config/app.php` file, `Laravel 5.5+ supports package discovery automatically, you should skip this step`
+    ```php
+    'providers' => [
+    //  ...
     TrayLabs\InfluxDB\Providers\ServiceProvider::class,
-]
-```
+    ]
+    ```
+    ```php
+    'aliases' => [
+    //  ...
+        'InfluxDB' => TrayLabs\InfluxDB\Facades\InfluxDB::class,
+    ]
+    ```
+- `Lumen`: in `bootstrap/app.php` file
+    ```php
+  // config
+  $app->configure('InfluxDB');
+  
+    $app->register(TrayLabs\InfluxDB\Providers\LumenServiceProvider::class);
+  $app->alias('InfluxDB', TrayLabs\InfluxDB\Facades\InfluxDB::class);
+    ```
 
-```php
-'aliases' => [
-//  ...
-    'InfluxDB' => TrayLabs\InfluxDB\Facades\InfluxDB::class,
-]
-```
 
 * Define env variables to connect to InfluxDB
 
@@ -53,10 +58,14 @@ INFLUXDB_UDP_PORT=4444 # Port for UDP
 ```
 
 * Write this into your terminal inside your project
-
-```ini
-php artisan vendor:publish
-```
+  - `Laravel`
+    ```ini
+    php artisan vendor:publish
+    ```
+  - `Lumen`
+    ```ini
+    cp vendor/TrayLabs/lumen-influxdb/config/InfluxDB.php config/InfluxDB.php
+    ```
 
 ## Reading Data
 
