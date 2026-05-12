@@ -15,8 +15,20 @@
         }
     },
     "require": {
-        "influxdb/influxdb-php": "^1.15",
+        "influxdata/influxdb-client-php": "^3.0",
         "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0|^11.0",
+        "orchestra/testbench": "^8.0|^9.0|^10.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TrayLabs\\InfluxDB\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "minimum-stability": "dev",
     "extra": {

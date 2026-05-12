@@ -2,25 +2,13 @@
 
 namespace TrayLabs\InfluxDB\Providers;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use InfluxDB\Client as InfluxClient;
-use InfluxDB\Database as InfluxDB;
-use InfluxDB\Driver\UDP;
+use InfluxDB2\Client as InfluxDB2Client;
 
-class ServiceProvider extends LaravelServiceProvider
+class ServiceProvider extends LaravelServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->publishes([
@@ -28,42 +16,27 @@ class ServiceProvider extends LaravelServiceProvider
         ]);
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
-        $this->app->singleton(InfluxDB::class, function($app) {
-            $client = new InfluxClient(
-                config('influxdb.host'),
-                config('influxdb.port'),
-                config('influxdb.username'),
-                config('influxdb.password'),
-                config('influxdb.ssl'),
-                config('influxdb.verifySSL'),
-                config('influxdb.timeout')
-            );
-            if (config('influxdb.udp.enabled') === true) {
-                $client->setDriver(new UDP(
-                    $client->getHost(),
-                    config('influxdb.udp.port')
-                ));
-            }
-            return $client->selectDB(config('influxdb.dbname'));
+        $this->app->singleton(InfluxDB2Client::class, function ($app) {
+            $scheme = config('influxdb.ssl') ? 'https' : 'http';
+            return new InfluxDB2Client([
+                'url'       => "{$scheme}://" . config('influxdb.host') . ':' . config('influxdb.port'),
+                'token'     => config('influxdb.token'),
+                'bucket'    => config('influxdb.bucket'),
+                'org'       => config('influxdb.org'),
+                'timeout'   => config('influxdb.timeout', 0),
+                'verifySSL' => config('influxdb.verifySSL', false),
+            ]);
         });
+        $this->app->alias(InfluxDB2Client::class, 'influxdb');
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
     public function provides()
     {
         return [
-            InfluxDB::class,
+            InfluxDB2Client::class,
+            'influxdb',
         ];
     }
 }
